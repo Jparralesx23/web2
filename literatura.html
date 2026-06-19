@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biblioteca Virtual - Literatura</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    background-color:#f4f6f9;
+    font-family:Arial, sans-serif;
+}
+
+.navbar{
+    background-color:#0d3b66 !important;
+}
+
+.banner{
+    background:linear-gradient(to right,#0d3b66,#1d5c99);
+    color:white;
+    padding:60px 20px;
+    text-align:center;
+}
+
+.card{
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0px 8px 20px rgba(0,0,0,0.2);
+}
+
+.btn-verde{
+    background-color:#198754;
+    color:white;
+}
+
+.btn-verde:hover{
+    background-color:#146c43;
+}
+
+footer{
+    background:#0d3b66;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+.panel{
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0px 2px 10px rgba(0,0,0,0.1);
+}
+
+</style>
+
+</head>
+
+<!-- otra cosa-->
+
+
+
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+    <img src="imagenes/log.jpg" alt="Logo" width="40" class="me-2">
+
+<div class="container">
+
+<a class="navbar-brand" href="index.html">
+ Biblioteca Virtual
+</a>
+
+<button class="navbar-toggler"
+data-bs-toggle="collapse"
+data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#catalogo">Catálogo</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#prestamos">Préstamos</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#favoritos">Favoritos</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#historial">Historial</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#admin">Administración</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- BANNER -->
+
+<section class="banner">
+
+<h1>Categoría Literatura</h1>
+
+<p>
+Explora novelas, cuentos, poesía y obras clásicas de la literatura universal.
+</p>
+
+</section>
+
+<!-- BUSCADOR -->
+<section class="container mt-5">
+
+<div class="panel">
+
+<h3> Búsqueda Avanzada</h3>
+
+<div class="row">
+
+<div class="col-md-4">
+<input
+type="text"
+id="buscarTitulo"
+class="form-control"
+placeholder="Buscar por título">
+</div>
+
+<div class="col-md-4">
+<input
+type="text"
+id="buscarAutor"
+class="form-control"
+placeholder="Buscar por autor">
+</div>
+
+<div class="col-md-4">
+<select
+id="buscarCategoria"
+class="form-select">
+
+<option value="">Todas las categorías</option>
+<option value="Literatura Clásica">Literatura Clásica</option>
+<option value="Realismo Mágico">Realismo Mágico</option>
+<option value="Literatura Infantil">Literatura Infantil</option>
+
+</select>
+</div>
+
+</div>
+
+<button
+class="btn btn-success mt-3"
+onclick="buscarLibros()">
+Buscar Libro
+</button>
+
+<button
+class="btn btn-secondary mt-3"
+onclick="mostrarTodos()">
+Mostrar Todos
+</button>
+
+</div>
+
+</section>
+
+<!-- CATÁLOGO Xtra -->
+<section id="catalogo" class="container mt-5">
+
+<h2 class="text-center mb-4">
+Libros Disponibles
+</h2>
+
+<div class="row" id="catalogoLibros">
+
+</div>
+
+</section>
+
+<!-- CATÁLOGO que ya no va-->
+
+
+
+
+<!-- FAVORITOS -->
+
+<section id="favoritos" class="container mt-5">
+
+<div class="panel">
+
+<h2> Lista de Favoritos</h2>
+
+<ul>
+<li>Don Quijote de la Mancha</li>
+<li>El Principito</li>
+<li>Romeo y Julieta</li>
+</ul>
+
+</div>
+
+</section>
+
+<!-- PRÉSTAMOS -->
+
+<section id="prestamos" class="container mt-5">
+
+<div class="panel">
+
+<h2> Préstamos y Reservas</h2>
+
+<table class="table">
+
+<tr>
+<th>Libro</th>
+<th>Estado</th>
+</tr>
+
+<tr>
+<td>Cien Años de Soledad</td>
+<td>Prestado</td>
+</tr>
+
+<tr>
+<td>Don Quijote</td>
+<td>Reservado</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- HISTORIAL -->
+
+<section id="historial" class="container mt-5">
+
+<div class="panel">
+
+<h2> Historial de Préstamos</h2>
+
+<ul>
+<li>El Principito - Devuelto</li>
+<li>Hamlet - Devuelto</li>
+<li>La Odisea - Devuelto</li>
+</ul>
+
+</div>
+
+</section>
+
+<!-- RECOMENDACIONES -->
+
+<section class="container mt-5">
+
+<div class="panel">
+
+<h2> Recomendaciones</h2>
+
+<p>
+Basado en tus intereses te recomendamos:
+</p>
+
+<ul>
+<li>La Iliada</li>
+<li>Romeo y Julieta</li>
+<li>Crimen y Castigo</li>
+<li>Orgullo y Prejuicio</li>
+</ul>
+
+</div>
+
+</section>
+<!-- ADMINISTRACIÓN -->
+
+<section id="admin" class="container mt-5">
+
+<div class="panel">
+
+<h2> Panel de Administración</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <label>Título</label>
+        <input
+        type="text"
+        id="titulo"
+        class="form-control">
+    </div>
+
+    <div class="col-md-4">
+        <label>Autor</label>
+        <input
+        type="text"
+        id="autor"
+        class="form-control">
+    </div>
+
+    <div class="col-md-4">
+        <label>Categoría</label>
+        <input
+        type="text"
+        id="categoria"
+        class="form-control">
+    </div>
+
+</div>
+
+<!-- NUEVA FILA -->
+
+<div class="row mt-3">
+
+    <div class="col-md-6">
+        <label>URL Leer en Línea</label>
+        <input
+        type="text"
+        id="urlLeer"
+        class="form-control"
+        placeholder="https://...">
+    </div>
+
+    <div class="col-md-6">
+        <label>URL Descargar PDF</label>
+        <input
+        type="text"
+        id="urlDescargar"
+        class="form-control"
+        placeholder="https://...">
+    </div>
+
+</div>
+
+<div class="mt-3">
+
+    <button
+    class="btn btn-success"
+    onclick="agregarLibro()">
+    Agregar Libro
+    </button>
+
+    <button
+    class="btn btn-warning"
+    onclick="editarLibro()">
+    Editar Libro
+    </button>
+
+    <button
+    class="btn btn-danger"
+    onclick="eliminarLibro()">
+    Eliminar Libro
+    </button>
+
+</div>
+
+<hr>
+
+<h4>Libros Registrados</h4>
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Categoría</th>
+        </tr>
+
+    </thead>
+
+    <tbody id="tablaLibros">
+
+    </tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+
+<footer>
+
+<h4>Biblioteca Virtual</h4>
+
+<p>
+Categoría Literatura
+</p>
+
+</footer>
+
+
+
+
+
+
+<!-- para la busqueda -->
+ <script>
+
+function buscarLibros(){
+
+let titulo =
+document.getElementById("buscarTitulo")
+.value
+.toLowerCase();
+
+let autor =
+document.getElementById("buscarAutor")
+.value
+.toLowerCase();
+
+let categoria =
+document.getElementById("buscarCategoria")
+.value
+.toLowerCase();
+
+let libros =
+document.querySelectorAll(".libro");
+
+libros.forEach(libro => {
+
+let tituloLibro =
+libro.dataset.titulo.toLowerCase();
+
+let autorLibro =
+libro.dataset.autor.toLowerCase();
+
+let categoriaLibro =
+libro.dataset.categoria.toLowerCase();
+
+let coincideTitulo =
+titulo === "" ||
+tituloLibro.includes(titulo);
+
+let coincideAutor =
+autor === "" ||
+autorLibro.includes(autor);
+
+let coincideCategoria =
+categoria === "" ||
+categoriaLibro.includes(categoria);
+
+if(
+coincideTitulo &&
+coincideAutor &&
+coincideCategoria
+){
+
+libro.style.display = "block";
+
+}else{
+
+libro.style.display = "none";
+
+}
+
+});
+
+}
+
+function mostrarTodos(){
+
+document.getElementById("buscarTitulo").value="";
+document.getElementById("buscarAutor").value="";
+document.getElementById("buscarCategoria").value="";
+
+document
+.querySelectorAll(".libro")
+.forEach(libro=>{
+
+libro.style.display="block";
+
+});
+
+}
+
+
+
+</script>
+
+
+<script>
+
+/* LIBROS PREDETERMINADOS */
+let libros = JSON.parse(localStorage.getItem("libros"));
+
+if(!libros || libros.length === 0){
+
+    libros = [
+
+        {
+            titulo: "Don Quijote de la Mancha",
+            autor: "Miguel de Cervantes",
+            categoria: "Literatura Clásica",
+            urlLeer: "https://www.gutenberg.org/files/996/996-h/996-h.htm",
+            urlDescargar: "https://www.gutenberg.org/cache/epub/996/pg996.pdf"
+        },
+
+        {
+            titulo: "Cien Años de Soledad",
+            autor: "Gabriel García Márquez",
+            categoria: "Realismo Mágico",
+            urlLeer: "https://es.wikipedia.org/wiki/Cien_a%C3%B1os_de_soledad",
+            urlDescargar: "https://es.wikipedia.org/wiki/Cien_a%C3%B1os_de_soledad"
+        },
+
+        {
+            titulo: "El Principito",
+            autor: "Antoine de Saint-Exupéry",
+            categoria: "Literatura Infantil",
+            urlLeer: "https://es.wikipedia.org/wiki/El_principito",
+            urlDescargar: "https://es.wikipedia.org/wiki/El_principito"
+        }
+
+    ];
+
+    localStorage.setItem(
+        "libros",
+        JSON.stringify(libros)
+    );
+
+}
+
+let libroSeleccionado = null;
+
+/* TABLA DEL PANEL */
+function mostrarLibros(){
+
+    let tabla = document.getElementById("tablaLibros");
+
+    if(!tabla) return;
+
+    tabla.innerHTML = "";
+
+    libros.forEach((libro,index)=>{
+
+        tabla.innerHTML += `
+        <tr onclick="seleccionarLibro(${index})">
+
+            <td>${index+1}</td>
+            <td>${libro.titulo}</td>
+            <td>${libro.autor}</td>
+            <td>${libro.categoria}</td>
+
+        </tr>
+        `;
+
+    });
+
+    localStorage.setItem(
+        "libros",
+        JSON.stringify(libros)
+    );
+
+}
+
+/* CATÁLOGO VISUAL */
+function mostrarCatalogoVisual(){
+
+    let catalogo =
+    document.getElementById("catalogoLibros");
+
+    if(!catalogo) return;
+
+    catalogo.innerHTML = "";
+
+    libros.forEach((libro)=>{
+
+        let descripcion = "";
+
+        if(libro.titulo === "Don Quijote de la Mancha"){
+
+            descripcion =
+            "Una de las obras más importantes de la literatura española.";
+
+        }
+        else if(libro.titulo === "Cien Años de Soledad"){
+
+            descripcion =
+            "Obra maestra del realismo mágico latinoamericano.";
+
+        }
+        else if(libro.titulo === "El Principito"){
+
+            descripcion =
+            "Una historia que combina fantasía, amistad y reflexión.";
+
+        }
+        else{
+
+            descripcion =
+            "Libro agregado desde el panel de administración.";
+
+        }
+
+        catalogo.innerHTML += `
+
+        <div class="col-md-4 mb-4 libro"
+        data-titulo="${libro.titulo}"
+        data-autor="${libro.autor}"
+        data-categoria="${libro.categoria}">
+
+            <div class="card h-100 shadow">
+
+                <div class="card-body">
+
+                    <h4>${libro.titulo}</h4>
+
+                    <p><strong>Autor:</strong> ${libro.autor}</p>
+
+                    <p><strong>Categoría:</strong> ${libro.categoria}</p>
+
+                    <p>${descripcion}</p>
+
+                    <a
+                    href="${libro.urlLeer || '#'}"
+                    target="_blank"
+                    class="btn btn-primary">
+                    Leer en Línea
+                    </a>
+
+                    <a
+                    href="${libro.urlDescargar || '#'}"
+                    target="_blank"
+                    class="btn btn-success">
+                    Descargar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+/* AGREGAR LIBRO */
+function agregarLibro(){
+
+    let titulo =
+    document.getElementById("titulo").value;
+
+    let autor =
+    document.getElementById("autor").value;
+
+    let categoria =
+    document.getElementById("categoria").value;
+
+    let urlLeer =
+    document.getElementById("urlLeer").value;
+
+    let urlDescargar =
+    document.getElementById("urlDescargar").value;
+
+    if(titulo === "" ||
+       autor === "" ||
+       categoria === ""){
+
+        alert("Complete todos los campos");
+        return;
+
+    }
+
+    libros.push({
+
+        titulo,
+        autor,
+        categoria,
+        urlLeer,
+        urlDescargar
+
+    });
+
+    mostrarLibros();
+    mostrarCatalogoVisual();
+    limpiarCampos();
+
+}
+
+/* SELECCIONAR */
+function seleccionarLibro(indice){
+
+    libroSeleccionado = indice;
+
+    document.getElementById("titulo").value =
+    libros[indice].titulo;
+
+    document.getElementById("autor").value =
+    libros[indice].autor;
+
+    document.getElementById("categoria").value =
+    libros[indice].categoria;
+
+    document.getElementById("urlLeer").value =
+    libros[indice].urlLeer || "";
+
+    document.getElementById("urlDescargar").value =
+    libros[indice].urlDescargar || "";
+
+}
+
+/* EDITAR */
+function editarLibro(){
+
+    if(libroSeleccionado === null){
+
+        alert("Seleccione un libro");
+        return;
+
+    }
+
+    libros[libroSeleccionado].titulo =
+    document.getElementById("titulo").value;
+
+    libros[libroSeleccionado].autor =
+    document.getElementById("autor").value;
+
+    libros[libroSeleccionado].categoria =
+    document.getElementById("categoria").value;
+
+    libros[libroSeleccionado].urlLeer =
+    document.getElementById("urlLeer").value;
+
+    libros[libroSeleccionado].urlDescargar =
+    document.getElementById("urlDescargar").value;
+
+    mostrarLibros();
+    mostrarCatalogoVisual();
+    limpiarCampos();
+
+}
+
+/* ELIMINAR */
+function eliminarLibro(){
+
+    if(libroSeleccionado === null){
+
+        alert("Seleccione un libro");
+        return;
+
+    }
+
+    libros.splice(libroSeleccionado,1);
+
+    libroSeleccionado = null;
+
+    mostrarLibros();
+    mostrarCatalogoVisual();
+    limpiarCampos();
+
+}
+
+/* LIMPIAR */
+function limpiarCampos(){
+
+    document.getElementById("titulo").value = "";
+    document.getElementById("autor").value = "";
+    document.getElementById("categoria").value = "";
+    document.getElementById("urlLeer").value = "";
+    document.getElementById("urlDescargar").value = "";
+
+}
+
+/* INICIO */
+window.onload = function(){
+
+    mostrarLibros();
+    mostrarCatalogoVisual();
+
+};
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+</body>
+
+
+
+
+</html>
